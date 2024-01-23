@@ -1,0 +1,190 @@
+parameters:
+  - $ref: ../_parameter.yaml#/acceptLanguage
+get:
+  summary: get Review
+  tags:
+    - Review
+  operationId: get-Review
+  description: get Review
+  responses:
+    '200':
+      description: Successful operation [If the API is called by an Admin or Super Admin, then only 'is_active' status will be displayed.]
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/review200'
+    '401':
+      description: Unauthorized / Invalid Token / Token has expired / Wrong token
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common401'
+    '404':
+      description: Data not found
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common404'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  parameters:
+    - $ref: ../_parameter.yaml#/fieldId
+    - $ref: ../_parameter.yaml#/fieldReviewer
+    - $ref: ../_parameter.yaml#/fieldReviewed
+    - $ref: ../_parameter.yaml#/fieldRating
+    - $ref: ../_parameter.yaml#/order
+    - $ref: ../_parameter.yaml#/limit
+    - $ref: ../_parameter.yaml#/offset
+  security:
+    - tokenAuth: []
+
+post:
+  summary: create Review
+  tags:
+    - Review
+  operationId: post-review
+  description: Review register
+  responses:
+    '201':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/reviewPost201'
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '401':
+      description: Unauthorized / Invalid Token / Token has expired / Wrong token
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common401'
+    '404':
+      description: Data not found 
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common404'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/reviewPost409Res'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../_schemas.yaml#/reviewPostReq'
+    required: true
+  security:
+    - tokenAuth: []
+
+patch:
+  summary: edit Review
+  tags:
+    - Review
+  operationId: patch-review
+  description: Review edit
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/reviewPatch200'
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '401':
+      description: Unauthorized / Invalid Token / Token has expired / Wrong token
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common401'
+    '404':
+      description: Data not found 
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common404'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../_schemas.yaml#/reviewPatchReq'
+  security:
+    - tokenAuth: []
+
+delete:
+  summary: delete Review
+  tags:
+    - Review
+  operationId: delete-review
+  description: Review delete
+  responses:
+    '200':
+      description: Deleted Successfully / Restored Successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/reviewDelete200'
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '401':
+      description: Unauthorized / Invalid Token / Token has expired / Wrong token
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common401'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common403'
+    '404':
+      description: Data not found
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common404'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  parameters:
+    - $ref: ../_parameter.yaml#/idReq
+    - $ref: ../_parameter.yaml#/activeNotReq
+
+  security:
+    - tokenAuth: []

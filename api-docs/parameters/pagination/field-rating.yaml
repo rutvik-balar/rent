@@ -1,0 +1,6 @@
+schema:
+  type: integer
+in: query
+name: rating
+example: 3.5
+description: 'you can pass rating as number'

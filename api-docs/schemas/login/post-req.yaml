@@ -1,0 +1,21 @@
+type: object
+properties:
+  phone_number:
+    type: string
+    example: '+91**********'
+  password:
+    type: string
+    example: '*******'
+  device_id:
+    type: string
+    example: '*******'
+  device_token:
+    type: string
+    example: '*************'
+  os:
+    type: string
+    example: 'android'
+required:
+  - phone_number
+  - password
+  - device_id

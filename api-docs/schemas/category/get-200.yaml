@@ -1,0 +1,47 @@
+type: object
+properties:
+  message:
+    type: string
+    example: 'Details Retrieved Successfully'
+  data:
+    type: object
+    properties:
+      totalCount:
+        type: integer
+        example: 5
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 3
+            name:
+              type: string
+              example: 'Cars'
+            parent_id:
+              type: integer
+              example: 1
+              nullable: true
+            img_url:
+              type: string
+              example: 'cars_image_url'
+            created_at:
+              type: string
+              format: date-time
+              example: '2023-12-09T17:12:15.000Z'
+            updated_at:
+              type: string
+              format: date-time
+              example: '2023-12-09T17:12:15.000Z'
+          required:
+            - id
+            - name
+            - img_url
+    required:
+      - totalCount
+      - data
+required:
+  - message
+  - data

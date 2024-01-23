@@ -1,0 +1,14 @@
+type: object
+properties:
+  message:
+    type: string
+    example: 'Data already exist'
+  errorData:
+    type: object
+    properties:
+      email:
+        type: string
+        example: "dummy@dummy.com"
+required:
+  - message
+  - errorData

@@ -1,0 +1,178 @@
+parameters:
+  - $ref: ../_parameter.yaml#/acceptLanguage
+get:
+  summary: get Category
+  tags:
+    - Category
+  operationId: get-category
+  description: get Category
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/category200'
+    '404':
+      description: Data not found
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common404'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  parameters:
+    - $ref: ../_parameter.yaml#/idNotReq
+    - $ref: ../_parameter.yaml#/fieldName
+    - $ref: ../_parameter.yaml#/fieldPid
+    - $ref: ../_parameter.yaml#/order
+    - $ref: ../_parameter.yaml#/limit
+    - $ref: ../_parameter.yaml#/offset
+  security:
+    - tokenAuth: []
+
+post:
+  summary: create Category
+  tags:
+    - Category
+  operationId: post-category
+  description: Category register
+  responses:
+    '201':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/categoryPost201'
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '401':
+      description: Unauthorized / Invalid Token / Token has expired / Wrong token
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common401'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/categoryPost409Res'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          $ref: '../_schemas.yaml#/categoryPostReq'
+    required: true
+  security:
+    - tokenAuth: []
+
+patch:
+  summary: edit Category
+  tags:
+    - Category
+  operationId: patch-category
+  description: Category edit
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/categoryPatch200'
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '401':
+      description: Unauthorized / Invalid Token / Token has expired / Wrong token
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common401'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/categoryPatch409Res'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  requestBody:
+    content:
+      multipart/form-data:
+        schema:
+          $ref: '../_schemas.yaml#/categoryPatchReq'
+  security:
+    - tokenAuth: []
+
+delete:
+  summary: delete Category
+  tags:
+    - Category
+  operationId: delete-category
+  description: Category delete
+  responses:
+    '200':
+      description: Deleted Successfully / Restored Successfully
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/categoryDelete200'
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '401':
+      description: Unauthorized / Invalid Token / Token has expired / Wrong token
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common401'
+    '403':
+      description: Forbidden
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common403'
+    '404':
+      description: Data not found
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common404'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  parameters:
+    - $ref: ../_parameter.yaml#/idReq
+    - $ref: ../_parameter.yaml#/activeNotReq
+    - $ref: ../_parameter.yaml#/archive
+
+  security:
+    - tokenAuth: []

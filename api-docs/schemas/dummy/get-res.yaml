@@ -1,0 +1,46 @@
+type: object
+properties:
+  message:
+    type: string
+    example: 'OK'
+  data:
+    type: object
+    properties:
+      totalCount:
+        type: integer
+        example: 2
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 4
+            name:
+              type: string
+              example: 'test2'
+            email:
+              type: string
+              example: 'test2@test.com'
+            description:
+              type: string
+              example: 'test2'
+            created_at:
+              type: string
+              format: date-time
+              example: '2023-12-09T17:12:15.000Z'
+            updated_at:
+              type: string
+              format: date-time
+              example: '2023-12-09T17:12:15.000Z'
+          required:
+            - id
+            - name
+            - email
+    required:
+      - totalCount
+      - data
+required:
+  - message
+  - data

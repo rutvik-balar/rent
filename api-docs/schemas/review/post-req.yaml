@@ -1,0 +1,15 @@
+type: object
+properties:
+  reviewed_id:
+    type: integer
+    example: 15
+  rating:
+    type: integer
+    example: 3.5
+  comment:
+    type: string
+    example: 'Nice Work'
+required: 
+  - reviewed_id
+  - rating
+  - comment

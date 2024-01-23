@@ -1,0 +1,6 @@
+schema:
+  type: integer
+in: query
+name: reviewed_id
+example: 10
+description: 'you can pass reviewed id as number'

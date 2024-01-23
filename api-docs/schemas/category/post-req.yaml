@@ -1,0 +1,13 @@
+type: object
+properties:
+  name:
+    type: string
+    example: 'Cars'
+  parent_id:
+    type: integer
+    example: 0
+  image:
+    type: file
+required:
+  - name
+  - image

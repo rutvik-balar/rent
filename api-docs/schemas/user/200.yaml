@@ -1,0 +1,77 @@
+type: object
+properties:
+  message:
+    type: string
+    example: 'Details Retrieved Successfully'
+  data:
+    type: object
+    properties:
+      totalCount:
+        type: integer
+        example: 1
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            id:
+              type: integer
+              example: 4
+            name:
+              type: string
+              example: 'test'
+            phone_number:
+              type: string
+              example: '+91**********'
+            email:
+              type: string
+              example: 'test@test.com'
+            role:
+              type: string
+              enum:
+                - 'user'
+                - 'admin'
+                - 'super_admin'
+            is_active:
+              type: boolean
+              example: true
+            created_at:
+              type: string
+              format: date-time
+              example: '2023-12-09T17:12:15.000Z'
+            created_by:
+              type: string
+              example: '1'
+            updated_at:
+              type: string
+              format: date-time
+              example: '2023-12-09T17:12:15.000Z'
+            updated_by:
+              type: string
+              example: '1'
+          required:
+            - id
+            - name
+            - phoneNumber
+            - email
+            - role
+            - isActive
+            - createdAt
+            - updatedAt
+        required:
+          - id
+          - name
+          - phone_number
+          - email
+          - role
+          - is_active
+          - created_at
+          - created_by
+          - updated_at
+          - updated_by
+    required:
+      - totalCount
+      - data
+required:
+  - message
+  - data

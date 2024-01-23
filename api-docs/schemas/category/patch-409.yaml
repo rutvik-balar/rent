@@ -1,0 +1,8 @@
+type: object
+properties:
+  message:
+    type: string
+    example: 'Name already exists'
+required:
+  - message
+  - errorData

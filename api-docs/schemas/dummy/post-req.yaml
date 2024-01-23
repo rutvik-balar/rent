@@ -1,0 +1,14 @@
+type: object
+properties:
+  name:
+    type: string
+    example: 'dummy'
+  email:
+    type: string
+    example: 'dummy@dummy.com'
+  description:
+    type: string
+    example: 'Dummy description'
+required:
+  - name
+  - email

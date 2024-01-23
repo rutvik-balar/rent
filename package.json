@@ -1,0 +1,79 @@
+{
+  "name": "rent-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "contributors": [
+    {
+      "name": "Ajeet Karmur"
+    },
+    {
+      "name": "Ketan Chavda"
+    }
+  ],
+  "scripts": {
+    "build": "tsc",
+    "start": "yarn build && node build/index.js",
+    "start:build": "yarn build && node -r dotenv-safe/config build/index.js",
+    "start:dev": "nodemon --exec ts-node -r dotenv-safe/config index.ts",
+    "postinstall": "husky install",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format:write": "prettier . --write",
+    "api-docs": "yarn api-docs:build && yarn api-docs:validate && yarn api-docs:copy-to-build",
+    "api-docs:build": "yarn swagger-cli bundle api-docs/openapi.yaml --outfile api-docs/_openapi.json --type json",
+    "api-docs:copy-to-build": "mkdir -p _build/api-docs && cp api-docs/_openapi.json _build/api-docs/",
+    "api-docs:validate": "yarn openapi-generator-cli validate -i api-docs/_openapi.json",
+    "image:remove": "./docker/script/remove-images.sh",
+    "container:start": "bash ./docker/script/start-containers.sh",
+    "container:stop": "bash ./docker/script/stop-containers.sh",
+    "start:db": "bash ./docker/script/start-mysql.sh",
+    "container:start:rebuild": "yarn image:remove && yarn container:start"
+  },
+  "dependencies": {
+    "@types/multer": "^1.4.11",
+    "aws-sdk": "^2.1528.0",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "express": "^4.18.2",
+    "fp-ts": "^2.16.1",
+    "i18n": "^0.15.1",
+    "joi": "^17.11.0",
+    "jsonwebtoken": "^9.0.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.29.4",
+    "multer": "^1.4.5-lts.1",
+    "mysql2": "^3.6.5",
+    "sequelize": "^6.35.1",
+    "swagger-ui-express": "^5.0.0",
+    "twilio": "^4.20.0",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@openapitools/openapi-generator-cli": "^2.7.0",
+    "@types/cors": "^2.8.17",
+    "@types/express": "^4.17.21",
+    "@types/i18n": "^0.13.10",
+    "@types/jsonwebtoken": "^9.0.5",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20.10.4",
+    "@types/swagger-ui-express": "^4.1.6",
+    "@typescript-eslint/eslint-plugin": "^6.13.2",
+    "@typescript-eslint/parser": "^6.13.2",
+    "dotenv-safe": "^8.2.0",
+    "eslint": "^8.55.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-autofix": "^1.1.0",
+    "eslint-plugin-deprecation": "^2.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.2.0",
+    "nodemon": "^3.0.2",
+    "prettier": "^3.1.0",
+    "swagger-cli": "^4.0.4",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
+  }
+}

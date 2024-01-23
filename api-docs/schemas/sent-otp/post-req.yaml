@@ -1,0 +1,11 @@
+type: object
+properties:
+  phone_number:
+    type: string
+    example: '+91**********'
+  device_id:
+    type: string
+    example: 'ROG123'
+required:
+  - phone_number
+  - device_id

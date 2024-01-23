@@ -1,0 +1,80 @@
+{
+  "root": true,
+  "env": {
+    "node": true,
+    "es6": true,
+    "jest": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": "tsconfig.json",
+    "ecmaVersion": 12,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "deprecation",
+    "@typescript-eslint",
+    "import",
+    "simple-import-sort",
+    "unused-imports",
+    "autofix"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-console": 1,
+    "object-curly-spacing": ["error", "always", { "arraysInObjects": true }],
+    // "@typescript-eslint/no-unused-vars": "error",
+    // Safe to disable the following rules as TSC will throw, ESLint doesn't understand interfaces properly,
+    // https://github.com/eslint/typescript-eslint-parser/issues/437
+    "no-undef": "off",
+    "no-unused-vars": "off",
+    "import/named": "off",
+    "import/no-unresolved": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "warn",
+      {
+        "args": "after-used",
+        "argsIgnorePattern": "^_",
+        "destructuredArrayIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/strict-boolean-expressions": "off",
+    // "@typescript-eslint/strict-boolean-expressions": [
+    //   "error",
+    //   {
+    //     "allowString": false,
+    //     "allowNumber": false,
+    //     "allowNullableObject": false,
+    //     "allowNullableBoolean": false,
+    //     "allowNullableString": false,
+    //     "allowNullableNumber": false,
+    //     "allowAny": false
+    //   }
+    // ],
+    "require-await": "off",
+    "no-warning-comments": 1,
+    "line-comment-position": "off",
+    //"eslint-comments/no-unused-disable": 1,
+    // "@typescript-eslint/no-floating-promises": "error",
+    "deprecation/deprecation": "warn",
+    "@typescript-eslint/comma-dangle": ["error", "always-multiline"],
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
+    "unused-imports/no-unused-imports": "warn",
+    "autofix/no-unused-vars": "warn"
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "extensions": [".ts", ".js"]
+      }
+    }
+  }
+}
+

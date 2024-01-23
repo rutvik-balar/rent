@@ -1,0 +1,46 @@
+parameters:
+  - $ref: ../_parameter.yaml#/acceptLanguage
+get:
+  summary: user-details
+  tags:
+    - User
+  operationId: get-user-details
+  description: get user details
+  responses:
+    '200':
+        description: Either single user or list of users
+        content:
+          application/json:
+            schema:
+              $ref: '../_schemas.yaml#/getUserSuccess200'
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '401':
+      description: Unauthorized / Invalid Token / Token has expired / Wrong token
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common401'
+    '404':
+      description: Data not found
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common404'            
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  parameters:
+    - $ref: ../_parameter.yaml#/field
+    - $ref: ../_parameter.yaml#/order
+    - $ref: ../_parameter.yaml#/limit
+    - $ref: ../_parameter.yaml#/offset
+  security:
+    - tokenAuth: []

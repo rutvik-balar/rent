@@ -1,0 +1,7 @@
+schema:
+  type: string
+in: query
+name: phone-number
+example: '+91**********'
+description: 'phone-number'
+required: false

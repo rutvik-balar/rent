@@ -1,0 +1,50 @@
+type: object
+properties:
+  message:
+    type: string
+    example: 'Reviews Retrieved Successfully'
+  data:
+    type: object
+    properties:
+      totalCount:
+        type: integer
+        example: 5
+      data:
+        type: array
+        items:
+          type: object
+          properties:
+            reviewer_id:
+              type: integer
+              example: 10
+            reviewed_id:
+              type: integer
+              example: 15
+            rating:
+              type: integer
+              example: 3.5
+            comment:
+              type: string
+              example: 'Nice Work'
+            is_active:
+              type: boolean
+              example: true
+            created_at:
+              type: string
+              format: date-time
+              example: '2023-12-09T17:12:15.000Z'
+            updated_at:
+              type: string
+              format: date-time
+              example: '2023-12-09T17:12:15.000Z'
+          required:
+            - reviewer_id
+            - reviewed_id
+            - rating
+            - comment
+    required:
+      - totalCount
+      - data
+required:
+  - message
+  - data

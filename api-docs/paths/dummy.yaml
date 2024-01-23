@@ -1,0 +1,144 @@
+parameters:
+  - $ref: ../_parameter.yaml#/acceptLanguage
+get:
+  summary: Dummy get
+  tags: 
+   - Dummy
+  operationId: get-dummy
+  description: Dummy get
+  responses:
+    '200':
+      description: Successful operation
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/dummyGetRes'
+    '404':
+      description: Data not found
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  parameters:
+    - $ref: ../_parameter.yaml#/field
+    - $ref: ../_parameter.yaml#/order
+    - $ref: ../_parameter.yaml#/limit
+    - $ref: ../_parameter.yaml#/offset
+
+  security:
+    - tokenAuth: []
+
+post:
+  summary: Dummy register
+  tags: 
+   - Dummy
+  operationId: post-dummy
+  description: Dummy register
+  responses:
+    '201':
+      description: Successful operation
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/dummyPos409tRes'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../_schemas.yaml#/dummyPostRes'
+    required: true
+  security:
+    - tokenAuth: []
+
+patch:
+  summary: Dummy edit
+  tags: 
+   - Dummy
+  operationId: patch-dummy
+  description: Dummy edit
+  responses:
+    '200':
+      description: Successful operation
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '404':
+      description: Data not found
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common404'
+    '409':
+      description: Conflict
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/dummyPos409tRes'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  requestBody:
+    content:
+      application/json:
+        schema:
+          $ref: '../_schemas.yaml#/dummyPostRes'
+  security:
+    - tokenAuth: []
+
+delete:
+  summary: Dummy delete
+  tags: 
+   - Dummy
+  operationId: delete-dummy
+  description: Dummy delete
+  responses:
+    '200':
+      description: Successful operation
+    '400':
+      description: Invalid parameter supplied
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common400'
+    '404':
+      description: Data not found
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common404'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '../_schemas.yaml#/common500'
+  parameters:
+    - $ref: ../_parameter.yaml#/emailReq
+  security:
+    - tokenAuth: []
