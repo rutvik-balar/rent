@@ -1,3 +1,7 @@
+const generateControllerFile = require('./new/controller');
+const generateRepositoryFile = require('./new/repository');
+const generateUsecaseFile = require('./new/usecase');
+const generateValidationFile = require('./new/validation');
 const fs = require('fs');
 const path = require('path');
 
@@ -49,77 +53,19 @@ if (!fs.existsSync(modulePath)) {
 
   // Loop through CRUD operations
   crudOperations.forEach((operation) => {
-    // Create API path file
-    const pathFileContent = `
-# ${moduleName} ${operation.toUpperCase()} API Paths
-/${moduleName}/${operation}:
-  ${operation === 'get' ? 'get' : 'post'}:
-    summary: ${operation === 'get' ? `Get ${moduleName} details` : `Create a new ${moduleName}` }
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/${moduleName}-${operation}'
-  `;
-    fs.writeFileSync(path.join(pathsDir, `${moduleName}-${operation}.yaml`), pathFileContent.trim());
 
-    // Create API schema file
-    const schemaFileContent = `
-# ${moduleName} ${operation.toUpperCase()} Schema
-${moduleName}-${operation}:
-  type: object
-  properties:
-    // Define properties here
-  required:
-    // Define required properties here
-  `;
-    fs.writeFileSync(path.join(schemasDir, `${moduleName}-${operation}.yaml`), schemaFileContent.trim());
+  // Create Controller file
+  generateControllerFile(moduleName, operation, controllerDir);
 
-    // Create Controller file
-    const controllerFileContent = `
-// ${moduleName} ${operation.toUpperCase()} Controller
-// Implement your controller logic here for ${operation} operation
-    `;
-    fs.writeFileSync(path.join(controllerDir, `${operation}-${moduleName}.controller.ts`), controllerFileContent.trim());
+  // Create UseCase file
+  generateUsecaseFile(moduleName, operation, usecaseDir);
 
-    // Create UseCase file
-    const usecaseFileContent = `
-// ${moduleName} ${operation.toUpperCase()} UseCase
-// Implement your use case logic here for ${operation} operation
-    `;
-    fs.writeFileSync(path.join(usecaseDir, `${operation}-${moduleName}.usecase.ts`), usecaseFileContent.trim());
+  // Create Validation Schema file
+  generateValidationFile(moduleName, operation, validationDir);
 
-    // Create Validation Schema file
-    const validationFileContent = `
-// ${moduleName} ${operation.toUpperCase()} Validation Schema
-// Implement your validation schema here for ${operation} operation
-    `;
-    fs.writeFileSync(path.join(validationDir, `${operation}-${moduleName}.schema.ts`), validationFileContent.trim());
+  // Create Repository file
+  generateRepositoryFile(moduleName, operation, repositoryDir);
 
-    // Create Repository file
-    const repositoryFileContent = `
-// ${moduleName} ${operation.toUpperCase()} Repository
-// Implement your repository logic here for ${operation} operation
-    `;
-    fs.writeFileSync(path.join(repositoryDir, `${operation}-${moduleName}.repo.ts`), repositoryFileContent.trim());
-
-    // Create API Docs file
-    const apiDocsFileContent = `
-# ${moduleName} ${operation.toUpperCase()} API Paths
-/${moduleName}/${operation}:
-  ${operation === 'get' ? 'get' : 'post'}:
-    summary: ${operation === 'get' ? `Get ${moduleName} details` : `Create a new ${moduleName}` }
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: '#/components/schemas/${moduleName}-${operation}'
-  `;
-    fs.writeFileSync(path.join(apiDocsDir, `${moduleName}-${operation}.yaml`), apiDocsFileContent.trim());
   });
 
   console.log(`API module for '${moduleName}' with CRUD operations generated successfully!`);
