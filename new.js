@@ -9,7 +9,8 @@ const moduleName = 'product';
 const modulePath = path.join(__dirname, 'src', 'apis', moduleName);
 
 // Create module directory if it doesn't exist
-if (!fs.existsSync(modulePath)) {
+// if (!fs.existsSync(modulePath)) {
+  fs.existsSync(modulePath) ? fs.rmSync(modulePath, { recursive: true }) : null 
   fs.mkdirSync(modulePath);
 
   // Create paths directory
@@ -69,6 +70,6 @@ if (!fs.existsSync(modulePath)) {
   });
 
   console.log(`API module for '${moduleName}' with CRUD operations generated successfully!`);
-} else {
-  console.error(`Error: Module '${moduleName}' already exists.`);
-}
+// } else {
+  // console.error(`Error: Module '${moduleName}' already exists.`);
+// }
