@@ -10,26 +10,32 @@ if (!fs.existsSync(modulePath)) {
 
   // Create paths directory
   const pathsDir = path.join(modulePath, 'paths');
+  fs.existsSync(pathsDir) ? fs.rmSync(pathsDir, { recursive: true }) : null 
   fs.mkdirSync(pathsDir);
 
   // Create schemas directory
   const schemasDir = path.join(modulePath, 'schemas');
+  fs.existsSync(schemasDir) ? fs.rmSync(schemasDir, { recursive: true }) : null 
   fs.mkdirSync(schemasDir);
 
   // Create controller directory
   const controllerDir = path.join(__dirname, 'src', 'interface', 'controller', moduleName);
+  fs.existsSync(controllerDir) ? fs.rmSync(controllerDir, { recursive: true }) : null 
   fs.mkdirSync(controllerDir);
 
   // Create usecase directory
   const usecaseDir = path.join(__dirname, 'src', 'application', 'usecase', moduleName);
+  fs.existsSync(usecaseDir) ? fs.rmSync(usecaseDir, { recursive: true }) : null 
   fs.mkdirSync(usecaseDir);
 
   // Create validation directory
   const validationDir = path.join(__dirname, 'src', 'interface', 'validation', moduleName);
+  fs.existsSync(validationDir) ? fs.rmSync(validationDir, { recursive: true }) : null 
   fs.mkdirSync(validationDir);
 
   // Create repository directory
   const repositoryDir = path.join(__dirname, 'src', 'infrastructure', 'orm', 'repositories', 'mysql-repositories', moduleName);
+  fs.existsSync(repositoryDir) ? fs.rmSync(repositoryDir, { recursive: true }) : null 
   fs.mkdirSync(repositoryDir);
 
   // Create API docs directory
