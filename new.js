@@ -2,6 +2,8 @@ const generateControllerFile = require('./new/controller');
 const generateRepositoryFile = require('./new/repository');
 const generateUsecaseFile = require('./new/usecase');
 const generateValidationFile = require('./new/validation');
+const generateEntitiesFile = require('./new/entities');
+
 const fs = require('fs');
 const path = require('path');
 
@@ -43,6 +45,11 @@ const modulePath = path.join(__dirname, 'src', 'apis', moduleName);
   fs.existsSync(repositoryDir) ? fs.rmSync(repositoryDir, { recursive: true }) : null 
   fs.mkdirSync(repositoryDir);
 
+  // Create entities directory
+  const entitiesDir = path.join(__dirname, 'src', 'domain', 'entities', moduleName);
+  fs.existsSync(entitiesDir) ? fs.rmSync(entitiesDir, { recursive: true }) : null 
+  fs.mkdirSync(entitiesDir);
+
   // Create API docs directory
   const apiDocsDir = path.join(__dirname, 'api-docs', 'paths');
   if (!fs.existsSync(apiDocsDir)) {
@@ -70,6 +77,8 @@ const modulePath = path.join(__dirname, 'src', 'apis', moduleName);
   });
 
   generateRepositoryFile(moduleName, repositoryDir);
+
+  generateEntitiesFile(moduleName, entitiesDir);
 
 
   console.log(`API module for '${moduleName}' with CRUD operations generated successfully!`);
