@@ -1,11 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
+function capitalizeFirstLetter(inputString) {
+  return inputString.charAt(0).toUpperCase() + inputString.slice(1);
+}
+
 const generateValidationFile = (moduleName, operation, validationDir) => {
     const content = `
-  // ${moduleName} ${operation.toUpperCase()} Validation Schema
-  // Implement your validation schema here for ${operation} operation
+import Joi from 'joi'
+
+export const ${operation}${capitalizeFirstLetter(moduleName)}Schema = Joi.object({
+  
+})
     `;
+
     fs.writeFileSync(path.join(validationDir, `${operation}-${moduleName}.schema.ts`), content.trim());
   };
 
