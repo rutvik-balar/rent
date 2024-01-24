@@ -65,9 +65,12 @@ const modulePath = path.join(__dirname, 'src', 'apis', moduleName);
   generateValidationFile(moduleName, operation, validationDir);
 
   // Create Repository file
-  generateRepositoryFile(moduleName, operation, repositoryDir);
+  // generateRepositoryFile(moduleName, operation, repositoryDir);
 
   });
+
+  generateRepositoryFile(moduleName, repositoryDir);
+
 
   console.log(`API module for '${moduleName}' with CRUD operations generated successfully!`);
 // } else {
